@@ -62,10 +62,7 @@ RUN chown -R monica:monica . && \
 
 
 # Install composer dependencies and prepare permissions for Apache
-ADD ./composer.json ./
-ADD ./database ./database
-ADD ./artisan ./
-ADD ./app ./app
+ADD . .
 USER monica
 RUN composer install --no-interaction --no-suggest
 USER root
