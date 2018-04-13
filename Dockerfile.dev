@@ -63,10 +63,13 @@ RUN chown -R monica:monica . && \
 
 # Install composer dependencies and prepare permissions for Apache
 ADD ./composer.json ./
+ADD ./database ./database
+ADD ./artisan ./
+ADD ./app ./app
 USER monica
-RUN composer install --no-interaction --no-suggest --no-dev && \
-    composer clear-cache
+RUN composer install --no-interaction --no-suggest
 USER root
+
 
 # This is the command that the container will run by default
 ENTRYPOINT ["make", "-f", "/var/www/monica/scripts/docker/Makefile"]
