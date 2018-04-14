@@ -45,9 +45,8 @@ WORKDIR /var/www/monica
 # Copy the local (outside Docker) source into the working directory,
 # copy system files into their proper homes, and set file ownership
 # correctly
-ADD ./scripts ./scripts
-ADD ./bootstrap ./bootstrap
-ADD ./storage ./storage
+ADD . .
+ADD .env.dev .env
 RUN chown -R monica:monica . && \
     chgrp -R apache bootstrap/cache storage && \
     chmod -R g+w bootstrap/cache storage && \
@@ -62,7 +61,6 @@ RUN chown -R monica:monica . && \
 
 
 # Install composer dependencies and prepare permissions for Apache
-ADD . .
 USER monica
 RUN composer install --no-interaction --no-suggest
 USER root
