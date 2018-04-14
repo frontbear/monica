@@ -65,6 +65,5 @@ USER monica
 RUN composer install --no-interaction --no-suggest
 USER root
 
-
 # This is the command that the container will run by default
 ENTRYPOINT ["make", "-f", "/var/www/monica/scripts/docker/Makefile"]

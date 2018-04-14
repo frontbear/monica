@@ -11,6 +11,7 @@ services:
     env_file: .env.dev
     volumes:
     - ./app:/var/www/monica/app
+    - ./routes:/var/www/monica/routes
 
   mysql:
     image: mysql
